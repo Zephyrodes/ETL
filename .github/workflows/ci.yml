@@ -97,7 +97,9 @@ jobs:
         id: get_commit
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "message<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: 💾 Run insertion if commit starts with 'insert'
         env:
