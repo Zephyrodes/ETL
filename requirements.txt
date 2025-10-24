@@ -1,0 +1,5 @@
+pandas
+holidays
+boto3
+pytest
+pyarrow
