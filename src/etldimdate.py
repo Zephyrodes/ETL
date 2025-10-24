@@ -35,16 +35,7 @@ if new_dates.empty:
     print("No hay nuevas fechas para agregar.")
 else:
     print(f"Generando fechas desde {new_dates.min()} hasta {new_dates.max()}")
-
-    # ===================== 3. Crear DataFrame =====================
-    new_df = pd.DataFrame({
-        "rental_date": new_dates.date,
-        "date_id": new_dates.strftime("%Y%m%d").astype(int),
-        "is_weekend": new_dates.weekday >= 5,
-        "is_holiday": [d in us_holidays for d in new_dates],
-        "day_of_week": new_dates.day_name(),
-        "quarter": new_dates.quarter
-    })
+    
 
     # ===================== 4. Unir con lo existente =====================
     final_df = pd.concat([existing_df, new_df], ignore_index=True) if not existing_df.empty else new_df
